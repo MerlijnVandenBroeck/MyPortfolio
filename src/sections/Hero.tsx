@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { ArrowDown, UserRound } from "lucide-react";
+import { ArrowDown } from "lucide-react";
+import { Portrait } from "../components/Portrait";
 import { personal } from "../data/personal";
 
 export function Hero() {
@@ -15,24 +16,7 @@ export function Hero() {
           SCROLL TO SEE MY WORK <ArrowDown aria-hidden="true" size={16} />
         </Link>
       </div>
-      <div className="hero-portrait">
-        {personal.photo ? (
-          <img
-            src={personal.photo}
-            alt={personal.photoAlt}
-            fetchPriority="high"
-          />
-        ) : (
-          <div
-            className="portrait-placeholder"
-            role="img"
-            aria-label="Portrait photo placeholder"
-          >
-            <UserRound aria-hidden="true" strokeWidth={1} />
-            <span className="mono">PHOTO TO ADD</span>
-          </div>
-        )}
-      </div>
+      <Portrait className="hero-portrait" priority />
     </section>
   );
 }

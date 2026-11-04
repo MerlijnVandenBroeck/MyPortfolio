@@ -9,8 +9,14 @@ export const personal = {
   title: "Game Designer × Producer",
   photo: "",
   photoAlt: "Merlijn Van den Broeck",
-  about:
-    "I’m drawn to indie games, experimental gameplay, and the unexpected moments that make an experience stick. I’m equally interested in shaping the play and helping a team bring it to life.",
+  about: {
+    introduction:
+      "Hi, I’m Merlijn, a game designer and producer who loves bringing ideas to life.",
+    background:
+      "My background in youth organizations and competitive sports has taught me to communicate clearly, solve problems as a team, and stay focused under pressure.",
+    passions:
+      "Game design and production are my biggest passions. I enjoy collaborating with others to create engaging gaming experiences, bringing enthusiasm and care to every project.",
+  },
   email: "",
   cv: "",
   socials: [
@@ -18,8 +24,4 @@ export const personal = {
     { label: "itch.io", url: "" },
     { label: "Other profile", url: "" },
   ],
-  background: "To add: your background and path into games.",
-  education: "To add: qualification, school, and graduation year.",
-  skills: "To add: your verified skills and specialties.",
-  tools: "To add: the engines and tools you use.",
 };
