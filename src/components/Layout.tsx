@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { House, Menu, X } from "lucide-react";
 import { navigation } from "../data/site";
 import { personal } from "../data/personal";
 export function Header() {
@@ -23,15 +23,14 @@ export function Header() {
     <header className="site-header">
       <Link
         to="/"
-        className="wordmark"
+        className="home-link"
         onClick={() => {
           setOpen(false);
           window.scrollTo(0, 0);
         }}
-        aria-label="Play Work home"
+        aria-label="Home"
       >
-        PLAY<span>/</span>WORK
-        <i />
+        <House aria-hidden="true" size={22} strokeWidth={1.5} />
       </Link>
       <button
         className="menu-button"

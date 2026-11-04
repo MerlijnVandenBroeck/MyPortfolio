@@ -97,6 +97,20 @@ em {
   background: var(--accent);
   margin-left: 6px;
 }
+.home-link {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: var(--border-width) solid var(--line);
+  color: var(--text);
+  transition: color var(--motion-fast), border-color var(--motion-fast), background var(--motion-fast);
+}
+.home-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--surface);
+}
 .site-header nav {
   display: flex;
   gap: var(--space-8);
@@ -864,7 +878,7 @@ footer .mono {
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
   align-items: center;
   gap: 7%;
-  min-height: 650px;
+  min-height: 560px;
 }
 .hero-role {
   color: var(--accent);
@@ -878,17 +892,25 @@ footer .mono {
   line-height: 1.02;
   letter-spacing: -0.06em;
   margin: var(--space-6) 0 var(--space-10);
-  max-width: 10ch;
-  text-wrap: balance;
+  max-width: none;
+}
+.hero-first-name,
+.hero-last-name {
+  display: block;
+}
+.hero-last-name {
+  white-space: nowrap;
+  font-size: 0.82em;
 }
 .hero-scroll {
   color: var(--text);
   padding: var(--space-3) 0;
 }
 .hero-portrait {
-  aspect-ratio: 4/5;
-  max-height: 530px;
-  width: 100%;
+  aspect-ratio: 1;
+  width: min(100%, 320px);
+  border-radius: var(--radius-circle);
+  justify-self: center;
   background: var(--surface);
   border: var(--border-width) solid var(--line);
   overflow: hidden;
@@ -950,13 +972,14 @@ footer .mono {
   }
   .hero h1 {
     font-size: clamp(48px, 12vw, 74px);
-    max-width: 12ch;
+    max-width: none;
     margin: var(--space-5) 0 var(--space-6);
   }
   .hero-portrait {
-    max-width: 420px;
-    max-height: none;
-    aspect-ratio: 4/3;
+    width: min(100%, 220px);
+  }
+  .hero-last-name {
+    font-size: 0.74em;
   }
   .hero-role {
     font-size: 11px;

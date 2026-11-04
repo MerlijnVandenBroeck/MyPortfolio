@@ -1,6 +1,11 @@
 // Personal information and biography. Keep verified facts here, separate from components. Empty URLs intentionally render as unavailable, never fake links.
+const firstName = "Merlijn";
+const lastName = "Van den Broeck";
+
 export const personal = {
-  name: "Merlijn Van den Broeck",
+  name: `${firstName} ${lastName}`,
+  firstName,
+  lastName,
   title: "Game Designer × Producer",
   photo: "",
   photoAlt: "Merlijn Van den Broeck",
