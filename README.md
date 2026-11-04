@@ -28,7 +28,7 @@ Codex can update the shared content and components without rebuilding each page 
 
 ## Where things live
 
-- `src/data/portfolio.ts`: personal information, navigation, project order, project facts, discipline copy, contact URLs, and CV path. Empty links render as unavailable labels.
+- `src/data/portfolio.ts`: personal information, navigation, project order, project facts, portrait, contact URLs, and CV path. Empty links render as unavailable labels.
 - `src/styles.css`: design tokens at the top, typography, layout, abstract artwork, responsive rules, and reduced-motion behavior. Tailwind is also available for future component work.
 - `src/App.tsx`: homepage sections, shared case-study template, routing, and shared reveal animation settings.
 - `src/components/Layout.tsx`: navigation, mobile menu, footer.
@@ -42,6 +42,8 @@ The existing Carrd portfolio could not be fetched during development (access den
 
 All three projects need real screenshots, descriptions, team sizes, dates, engine/tools, genre/platform, responsibilities, challenges, process, results, and external game links. Artifact Ambush's combined design/production role comes from the brief. Fixtape and Spindwich roles remain unverified placeholders.
 
+Set `personal.photo` to a portrait image path to replace the homepage photo placeholder; update `personal.photoAlt` as needed.
+
 Add verified background, skills, tools, education, email, profile URLs, and CV. Set each project's `image` and meaningful `imageAlt` to replace the clearly labeled abstract concept artwork. The `gallery` array supports additional image paths and alt text. For hero video, set `video`, optional `videoPoster`, and `videoCaptions` (a WebVTT file). The shared player has native controls and does not autoplay. Provide captions for spoken content. Do not treat the placeholder graphics as game screenshots.
 
 ## GitHub Pages
@@ -50,4 +52,4 @@ Add verified background, skills, tools, education, email, profile URLs, and CV. 
 
 ## Interaction and accessibility
 
-The discipline buttons use `aria-pressed`; both work with keyboard activation. Mobile navigation exposes its expanded state. A skip link and visible focus states support keyboard use. All project links remain visible without hover. Motion reveals respect reduced-motion preferences; CSS animation and smooth scrolling are also disabled under that preference. Navigation and case studies share one template and data source.
+Mobile navigation exposes its expanded state. A skip link and visible focus states support keyboard use. All project links remain visible without hover. Motion reveals respect reduced-motion preferences; CSS animation and smooth scrolling are also disabled under that preference. Navigation and case studies share one template and data source.
