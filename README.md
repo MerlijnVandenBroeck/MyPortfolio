@@ -46,9 +46,36 @@ Set `personal.photo` to a portrait image path to replace the homepage photo plac
 
 Add verified background, skills, tools, education, email, profile URLs, and CV. Set each project's `image` and meaningful `imageAlt` to replace the clearly labeled abstract concept artwork. The `gallery` array supports additional image paths and alt text. For hero video, set `video`, optional `videoPoster`, and `videoCaptions` (a WebVTT file). The shared player has native controls and does not autoplay. Provide captions for spoken content. Do not treat the placeholder graphics as game screenshots.
 
-## GitHub Pages
+## Automatic GitHub Pages deployment
 
-`HashRouter` uses routes like `/#/work/fixtape`, so direct links and refreshes work without server rewrites. Vite's relative base supports repository subpaths. A GitHub Actions workflow builds and deploys `dist/` when changes are pushed to `main`, or when manually triggered. In repository Settings → Pages, select **GitHub Actions** as the build source. Deployment has not been performed by Codex.
+The workflow in `.github/workflows/pages.yml` validates pull requests to `main` without deploying them. Every push to `main`, including a merged pull request, runs `npm ci`, the TypeScript check, and the production build, then publishes `dist/` through the official GitHub Pages actions. A failed build prevents deployment. No personal token or separate hosting service is required.
+
+### One-time GitHub settings
+
+1. Open this repository on GitHub → **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+3. Under **Settings → Actions → General**, ensure Actions are enabled and that your policy permits the `actions/*` actions used by the workflow.
+4. If the **github-pages** environment has deployment protection rules, allow `main` to deploy. Required reviewers pause deployment; remove that requirement if you want publishing to be fully automatic.
+5. Merge these configuration changes into `main`. Monitor **Actions → Build and deploy portfolio** for the build and deployment results. Future merged pull requests deploy automatically.
+
+The workflow grants Pages write and OIDC permissions only to the deployment job. You do not need to enable broad repository write permissions. You do not need a `gh-pages` branch or a Deploy from a branch source.
+
+Site: https://merlijnvandenbroeck.github.io/MyPortfolio/
+
+### Paths and routing
+
+Vite builds assets with the `/MyPortfolio/` base, matching this repository's Pages URL. Development remains at `/`. React Router uses `HashRouter`, so project links such as `https://merlijnvandenbroeck.github.io/MyPortfolio/#/work/fixtape` work when opened directly or refreshed; GitHub Pages needs no rewrite or custom 404 page.
+
+Keep public image, video, and CV references relative (for example `media/fixtape.webp`), not root-relative (`/media/fixtape.webp`). Hash navigation preserves the `/MyPortfolio/` document path. If the repository is renamed or moved to a custom domain, update the production base in `vite.config.ts`.
+
+To preview the production build locally:
+
+```sh
+npm run build
+npm run preview
+```
+
+Open the `/MyPortfolio/` address reported by Vite (normally `http://localhost:4173/MyPortfolio/`). Manual deployment is also available through **Actions → Build and deploy portfolio → Run workflow**, selecting `main`. Running it from another branch will only build, not deploy.
 
 ## Interaction and accessibility
 
