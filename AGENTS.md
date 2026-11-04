@@ -24,7 +24,7 @@ Inspect Git status before editing. Preserve existing user changes, images, copy,
 
 React 19, TypeScript, Vite, Tailwind CSS 4, Motion for React, Lucide, React Router. Static frontend; no backend, secrets, or CMS required. Fonts are locally bundled via Fontsource. Prefer the current small toolchain; don't add state frameworks, component libraries, or a CMS for ordinary content edits.
 
-- `src/data/personal.ts`: name, role, portrait, biography, background, skills, education, tools, email, CV, and social links. Blank URLs intentionally display unavailable labels.
+- `src/data/personal.ts`: name, role, portrait, biography (introduction, background, passions), email, CV, and social links. Blank URLs intentionally display unavailable labels.
 - `src/data/projects.ts`: typed `Project` shape and all project content. Array order controls cards, numbering, and next-project navigation.
 - `src/data/site.ts`: navigation labels and section IDs.
 - `src/design/tokens.css`: semantic colors, typography, spacing, borders, focus treatment, and CSS motion timing.

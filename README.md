@@ -53,7 +53,7 @@ All three projects need real screenshots, descriptions, team sizes, dates, engin
 
 Set `personal.photo` to a portrait image path to replace the homepage photo placeholder; update `personal.photoAlt` as needed.
 
-Add verified background, skills, tools, education, email, profile URLs, and CV. Set each project's `image` and meaningful `imageAlt` to replace the clearly labeled abstract concept artwork. The `gallery` array supports additional image paths and alt text. For hero video, set `video`, optional `videoPoster`, and `videoCaptions` (a WebVTT file). The shared player has native controls and does not autoplay. Provide captions for spoken content. Do not treat the placeholder graphics as game screenshots.
+The About section uses the supplied introduction, background, and passions. Add email, profile URLs, and CV when available. Set each project's `image` and meaningful `imageAlt` to replace the clearly labeled abstract concept artwork. The `gallery` array supports additional image paths and alt text. For hero video, set `video`, optional `videoPoster`, and `videoCaptions` (a WebVTT file). The shared player has native controls and does not autoplay. Provide captions for spoken content. Do not treat the placeholder graphics as game screenshots.
 
 ## Automatic GitHub Pages deployment
 
