@@ -28,13 +28,22 @@ Codex can update the shared content and components without rebuilding each page 
 
 ## Where things live
 
-- `src/data/portfolio.ts`: personal information, navigation, project order, project facts, portrait, contact URLs, and CV path. Empty links render as unavailable labels.
-- `src/styles.css`: design tokens at the top, typography, layout, abstract artwork, responsive rules, and reduced-motion behavior. Tailwind is also available for future component work.
-- `src/App.tsx`: homepage sections, shared case-study template, routing, and shared reveal animation settings.
-- `src/components/Layout.tsx`: navigation, mobile menu, footer.
-- `src/components/Artwork.tsx`: shared media rendering and original abstract placeholder graphics.
-- `public/`: place optimized screenshots and CV here. Refer to them using paths such as `media/fixtape.webp` and `merlijn-cv.pdf` (no leading slash, so GitHub Pages subpaths work).
-- `index.html`: site description, favicon, and default metadata. Page titles change per case study.
+See [CUSTOMIZATION.md](CUSTOMIZATION.md) for example natural-language prompts and a full editing map. [AGENTS.md](AGENTS.md) provides permanent guidance for future Codex tasks.
+
+- `src/data/personal.ts`: personal facts, portrait, biography, CV, contact, and social links.
+- `src/data/projects.ts`: typed project content and order. Cards, numbering, routes, and next-project links follow this array automatically.
+- `src/data/site.ts`: navigation.
+- `src/design/tokens.css`: shared colors, fonts, type sizes, spacing, borders, and hover timing.
+- `src/design/motion.ts`: shared reveal settings and enable switch.
+- `src/sections/`: separate homepage section components.
+- `src/pages/`: homepage composition, project route lookup, and not-found page.
+- `src/components/`: shared cards, case-study template, media, reveal wrapper, section label, and site shell.
+- `src/styles.css`: layouts, responsive rules, and original placeholder illustration styles.
+- `public/`: optimized screenshots, video, captions, portrait, and CV. Use relative paths such as `media/fixtape.webp`.
+- `src/App.tsx`: routes and page-level navigation/title effects. `src/main.tsx`: providers and bundled font imports.
+- `index.html`: default metadata and favicon.
+
+There is no CMS or backend to maintain. Content is in plain TypeScript files, the visual system uses native CSS variables, and shared templates avoid one-off pages for each project.
 
 ## Content still needed
 
