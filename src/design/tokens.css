@@ -1,0 +1,55 @@
+/* Shared visual system. Preserve these defaults unless a visual change is requested. */
+:root {
+  /* Brand and semantic surfaces. Artwork-specific palettes stay in styles.css. */
+  --bg: #111318;
+  --surface: #191c22;
+  --accent: #f8a36a;
+  --accent-hover: #ffc39a;
+  --text: #f1eee8;
+  --muted: #a2a6af;
+  --quiet: #767c87;
+  --line: #ffffff23;
+  --header-bg: #111318ed;
+  --badge-bg: #1113189c;
+  --portrait-surface: #22262e;
+
+  --heading: "Space Grotesk", sans-serif;
+  --body: Inter, sans-serif;
+  --mono: "Space Mono", monospace;
+  --type-caption: 8px;
+  --type-label: 10px;
+  --type-small: 12px;
+  --type-copy: 13px;
+  --type-body: 15px;
+  --type-card: 32px;
+  --type-section: clamp(40px, 5vw, 76px);
+  --leading-body: 1.8;
+  --leading-heading: 1.05;
+  --tracking-heading: -0.055em;
+
+  /* Shared spacing scale; special illustration geometry remains local. */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-15: 60px;
+  --section-space: 90px;
+  --section-space-mobile: 55px;
+  --page-gutter: 8%;
+  --page-gutter-small: 6%;
+  --page-width: 1600px;
+
+  --border-width: 1px;
+  --radius-circle: 50%;
+  --focus-width: 2px;
+  --focus-offset: 6px;
+
+  /* CSS hover timing. Reveal settings are in motion.ts. */
+  --motion-fast: 0.2s;
+  --motion-image: 0.5s;
+  --motion-artwork: 0.6s;
+}
