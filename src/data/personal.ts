@@ -10,18 +10,21 @@ export const personal = {
   photo: "",
   photoAlt: "Merlijn Van den Broeck",
   about: {
+    heading: "Indie Game Designer & Producer",
     introduction:
-      "Hi, I’m Merlijn, a game designer and producer who loves bringing ideas to life.",
+      "Hi, I'm Merlijn, a second-year Independent Game Production student at Howest Digital Arts & Entertainment in Kortrijk, Belgium.",
     background:
-      "My background in youth organizations and competitive sports has taught me to communicate clearly, solve problems as a team, and stay focused under pressure.",
+      "Through my background in youth organizations and competitive sports, I've developed strong teamwork, communication, and problem-solving skills, as well as the ability to stay focused under pressure.",
     passions:
-      "Game design and production are my biggest passions. I enjoy collaborating with others to create engaging gaming experiences, bringing enthusiasm and care to every project.",
+      "My biggest passions lie in Game Design and Game Production. I love bringing ideas to life and collaborating with others to create engaging gaming experiences. I aim to bring both my skills and enthusiasm into every project I work on.",
   },
-  email: "",
+  contactMessage:
+    "If you'd like to discuss a project, collaboration, internship opportunity, or anything related to game development, feel free to reach out.",
+  email: "merlijn@9levens.be",
   cv: "",
   socials: [
-    { label: "LinkedIn", url: "" },
-    { label: "itch.io", url: "" },
-    { label: "Other profile", url: "" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/merlijn-van-den-broeck/" },
+    { label: "itch.io", url: "https://elmerlino.itch.io/" },
+    { label: "Instagram", url: "https://www.instagram.com/merlijnvdb37/" },
   ],
 };

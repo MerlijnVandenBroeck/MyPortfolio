@@ -28,13 +28,29 @@ export function ProjectCard({
         <span>
           {projectNumber(project)} / {project.category}
         </span>
-        <span>CASE STUDY ↗</span>
       </div>
       <Link to={`/work/${project.slug}`} className="project-title">
         <h3>{project.title}</h3>
         <ArrowUpRight aria-hidden="true" />
       </Link>
       <p>{project.description}</p>
+      {project.platform && (
+        <dl className="project-card-facts">
+          {[
+            ["Platform", project.platform],
+            ["Development", project.timeframe],
+            ["Team", project.team],
+            ["Role", project.role],
+            ["Engine", project.tools],
+            ["Genre", project.genre],
+          ].map(([label, value]) => (
+            <div key={label}>
+              <dt className="mono">{label}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
     </Reveal>
   );
 }

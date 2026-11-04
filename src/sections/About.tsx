@@ -14,18 +14,10 @@ export function About() {
           <Portrait className="about-portrait" />
         </div>
         <div className="about-copy">
+          <h3>{personal.about.heading}</h3>
           <p>{personal.about.introduction}</p>
           <p>{personal.about.background}</p>
           <p>{personal.about.passions}</p>
-          {personal.cv ? (
-            <a className="button outline" href={personal.cv} download>
-              DOWNLOAD CV <Download aria-hidden="true" size={16} />
-            </a>
-          ) : (
-            <button className="button outline" type="button" disabled>
-              CV TO BE ADDED <Download aria-hidden="true" size={16} />
-            </button>
-          )}
         </div>
       </Reveal>
     </section>

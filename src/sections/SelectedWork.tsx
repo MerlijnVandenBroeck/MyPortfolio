@@ -8,7 +8,7 @@ export function SelectedWork() {
     <section id="work" className="section work">
       <SectionLabel number="01">WORK</SectionLabel>
       <Reveal className="section-intro">
-        <h2>Selected work</h2>
+        <h2>Projects</h2>
       </Reveal>
       <div className="project-grid">
         {projects.map((project, index) => (

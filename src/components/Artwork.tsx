@@ -1,4 +1,5 @@
 import { Asterisk } from "lucide-react";
+import { useRef, useState } from "react";
 import { projectNumber, type Project } from "../data/projects";
 // Original CSS artwork is intentionally abstract, not a screenshot of the game.
 export function Artwork({
@@ -8,6 +9,23 @@ export function Artwork({
   project: Project;
   allowVideo?: boolean;
 }) {
+  const preview = useRef<HTMLVideoElement>(null);
+  const previewRequested = useRef(false);
+  const [playing, setPlaying] = useState(false);
+  const stopPreview = () => {
+    previewRequested.current = false;
+    preview.current?.pause();
+    setPlaying(false);
+  };
+  const startPreview = () => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    previewRequested.current = true;
+    const video = preview.current;
+    if (video) void video.play().then(() => {
+      if (previewRequested.current) setPlaying(true);
+      else video.pause();
+    }).catch(() => setPlaying(false));
+  };
   if (project.video && allowVideo)
     return (
       <div className="project-art">
@@ -34,8 +52,15 @@ export function Artwork({
     );
   if (project.image)
     return (
-      <div className="project-art">
+      <div className={`project-art project-cover cover-${project.theme} ${playing ? "is-previewing" : ""}`}
+        onMouseEnter={startPreview} onMouseLeave={stopPreview}
+        onFocus={startPreview} onBlur={stopPreview}>
         <img src={project.image} alt={project.imageAlt} loading="lazy" />
+        {project.previewVideo && !allowVideo && (
+          <video ref={preview} muted loop playsInline preload="none" aria-hidden="true" onError={stopPreview}>
+            <source src={project.previewVideo} />
+          </video>
+        )}
       </div>
     );
   return (

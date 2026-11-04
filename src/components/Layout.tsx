@@ -59,7 +59,7 @@ export function Footer() {
   return (
     <footer>
       <Link to="/" className="wordmark">
-        PLAY<span>/</span>WORK
+        GAME DESIGNER <span>&amp;</span> PRODUCER
       </Link>
       <span>
         © {new Date().getFullYear()} {personal.name}
