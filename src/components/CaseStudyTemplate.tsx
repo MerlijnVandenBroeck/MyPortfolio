@@ -62,7 +62,7 @@ function ProjectCaseStudy({
       </header>
 
       {project.video ? (
-        <Artwork project={project} allowVideo />
+        <Artwork key={`${project.slug}-${project.video}`} project={project} allowVideo />
       ) : (
         <div className="spindwich-video-placeholder" role="img" aria-label="Gameplay video placeholder">
           <Play aria-hidden="true" size={38} />
@@ -118,28 +118,29 @@ function ProjectCaseStudy({
       <div className="spindwich-copy-grid">
         <Reveal className="spindwich-copy-panel">
           <h2>My contributions</h2>
-          {project.contributions ? (
-            <ul className="spindwich-contributions">
-              {project.contributions.map((contribution) => <li key={contribution}>{contribution}</li>)}
-            </ul>
-          ) : (
-            <p>{project.responsibilities}</p>
-          )}
+          <ul className="spindwich-contributions">
+            {project.contributions.map((contribution) => <li key={contribution}>{contribution}</li>)}
+          </ul>
         </Reveal>
         <Reveal className="spindwich-copy-panel">
           <h2>Results</h2>
           <p>{project.results}</p>
         </Reveal>
         <Reveal className="spindwich-copy-panel">
-          <h2>Team mates</h2>
+          <h2>Teammates</h2>
           <p>
-            {project.teammate ? (
+            {project.teamCredits ? (
               <>
-                {project.teammate.before}
-                <a href={project.teammate.url} target="_blank" rel="noreferrer">
-                  {project.teammate.name}
-                </a>
-                {project.teammate.after}
+                {project.teamCredits.before}
+                {project.teamCredits.members.map((member, index) => (
+                  <span key={member.name}>
+                    {index > 0 && (index === project.teamCredits!.members.length - 1 ? " and " : ", ")}
+                    {member.url ? (
+                      <a href={member.url} target="_blank" rel="noreferrer">{member.name}</a>
+                    ) : member.name}
+                  </span>
+                ))}
+                {project.teamCredits.after}
               </>
             ) : "Team member details to add."}
           </p>
@@ -180,7 +181,6 @@ function ProjectCaseStudy({
                 <ChevronRight aria-hidden="true" />
               </button>
             </div>
-            <p className="mono">{selectedImage.alt}</p>
           </>
         )}
       </dialog>

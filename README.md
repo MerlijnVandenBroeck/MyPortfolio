@@ -45,15 +45,13 @@ See [CUSTOMIZATION.md](CUSTOMIZATION.md) for example natural-language prompts an
 
 There is no CMS or backend to maintain. Content is in plain TypeScript files, the visual system uses native CSS variables, and shared templates avoid one-off pages for each project.
 
-## Content still needed
+## Content status
 
-The existing Carrd portfolio could not be fetched during development (access denied). Only the supplied brief was used. No professional accomplishments or project outcomes were invented.
+The homepage biography, portrait images, contact details, and social links are populated from the supplied information. Spindwich, Fixtape, and Artifact Ambush have project descriptions, overview details, contributions, results, teammate information, screenshots, and gameplay videos.
 
-All three projects need real screenshots, descriptions, team sizes, dates, engine/tools, genre/platform, responsibilities, challenges, process, results, and external game links. Artifact Ambush's combined design/production role comes from the brief. Fixtape and Spindwich roles remain unverified placeholders.
+Artifact Ambush has no external play URL, so its play button is intentionally hidden. A CV has not yet been added, so the contact section still marks it as unavailable. Project facts and outcomes are based on information supplied by Merlijn and have not been independently verified.
 
-Set `personal.photo` to a portrait image path to replace the homepage photo placeholder; update `personal.photoAlt` as needed.
-
-The About section uses the supplied introduction, background, and passions. Add email, profile URLs, and CV when available. Set each project's `image` and meaningful `imageAlt` to replace the clearly labeled abstract concept artwork. The `gallery` array supports additional image paths and alt text. For hero video, set `video`, optional `videoPoster`, and `videoCaptions` (a WebVTT file). The shared player has native controls and does not autoplay. Provide captions for spoken content. Do not treat the placeholder graphics as game screenshots.
+Personal and project content is maintained in `src/data/personal.ts` and `src/data/projects.ts`. The `gallery` array accepts image paths and alt text. For a project's gameplay video, set `video`, with optional `videoPoster` and `videoCaptions` (a WebVTT file). The shared player has native controls and does not autoplay; provide captions for spoken content.
 
 ## Automatic GitHub Pages deployment
 

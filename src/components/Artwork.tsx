@@ -1,5 +1,5 @@
 import { Asterisk } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { projectNumber, type Project } from "../data/projects";
 // Original CSS artwork is intentionally abstract, not a screenshot of the game.
 export function Artwork({
@@ -12,6 +12,10 @@ export function Artwork({
   const preview = useRef<HTMLVideoElement>(null);
   const previewRequested = useRef(false);
   const [playing, setPlaying] = useState(false);
+  useEffect(() => () => {
+    previewRequested.current = false;
+    preview.current?.pause();
+  }, []);
   const stopPreview = () => {
     previewRequested.current = false;
     preview.current?.pause();
@@ -30,6 +34,7 @@ export function Artwork({
     return (
       <div className="project-art">
         <video
+          ref={preview}
           controls
           preload="none"
           poster={project.videoPoster}

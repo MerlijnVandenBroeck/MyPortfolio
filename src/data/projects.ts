@@ -17,27 +17,20 @@ export type Project = {
   tools: string;
   genre: string;
   platform?: string;
-  overview: string;
-  story?: string[];
   software?: { name: string; icon: string }[];
-  teammate?: { before: string; name: string; url: string; after: string };
-  contributions?: string[];
-  responsibilities: string;
-  challenges: string;
-  process: string;
-  production: string;
+  teamCredits?: {
+    before: string;
+    members: { name: string; url?: string }[];
+    after: string;
+  };
+  contributions: string[];
   results: string;
   url: string;
   gallery: { src: string; alt: string }[];
 };
-const pending = "Content to add — replace with verified project information.";
 export const projects: Project[] = [
   {
     slug: "spindwich",
-    story: [
-      "Created during the Very Serious Game Jam hosted by Juniper Dev, Spindwich was my first game jam project. Working in a team of two, we completed the game in just one week, earning a top 350 overall placement and a top 50 placement in the creativity and theme category.",
-      "Special thanks to Ernst Verbeuren for joining me on this project.",
-    ],
     software: [
       { name: "Blender", icon: "media/software/blender.svg" },
       { name: "Unity", icon: "media/software/unity.svg" },
@@ -58,7 +51,6 @@ export const projects: Project[] = [
     tools: "Unity",
     genre: "Arcade / Cooking",
     platform: "PC / WEB",
-    overview: "Spindwich is a fast-paced cooking game where players spin for ingredients to make the correct sandwiches and fulfill customer orders. With a constantly spinning ingredient tray, timing is everything. Make as many correct sandwiches as possible without making mistakes!",
     contributions: [
       "Main game design / balancing",
       "3D art",
@@ -66,18 +58,13 @@ export const projects: Project[] = [
       "Audio",
       "UI",
     ],
-    teammate: {
+    teamCredits: {
       before: "Special thanks to ",
-      name: "Ernst Verbeuren",
-      url: "https://ernstverbeuren.dev",
+      members: [{ name: "Ernst Verbeuren", url: "https://ernstverbeuren.dev" }],
       after: " for joining me on this project.",
     },
-    responsibilities: pending,
-    challenges: pending,
-    process: pending,
-    production: pending,
     results:
-      "Created during the Very Serious Game Jam hosted by Juniper Dev, Spindwich was our first game jam project. Working in a team of two, we managed to earn a top 350 (out of 3500) overall and a top 50 in the creativity and theme category.",
+      "Created during the Very Serious Game Jam hosted by Juniper Dev, Spindwich was our first game jam project. Working in a team of two, we placed among the top 350 out of 3,500 overall and the top 50 in the creativity and theme category.",
     url: "https://elmerlino.itch.io/spindwich",
     gallery: [
       {
@@ -103,48 +90,106 @@ export const projects: Project[] = [
     title: "Artifact Ambush",
     category: "SCHOOL PROJECT",
     role: "Game Designer & Developer",
-    description: "Artifact Ambush is a chaotic party game where up to four players battle it out in a confined arena. The goal is simple: be the first adventurer to collect 20 coins. But watch out for the other players, they can steal your coins by punching you or simply throwing dynamite in your face.",
+    description: "Artifact Ambush is a chaotic party game where up to four players battle it out in a confined arena. The goal is simple: be the first adventurer to collect 20 coins. But watch out for the other players; they can steal your coins by punching you or throwing dynamite in your face.",
     theme: "artifact",
     image: "media/artifact-ambush-icon.png",
     imageAlt: "Artifact Ambush title over a golden artifact and treasure chamber",
+    video: "media/artifact-ambush/artifact-ambush-full-gameplay.mp4",
+    previewVideo: "media/artifact-ambush/artifact-ambush-hover.mp4",
     team: "4 Devs",
     timeframe: "2 Months",
     tools: "Unity",
-    software: [{ name: "Unity", icon: "media/software/unity.svg" }],
+    software: [
+      { name: "Blender", icon: "media/software/blender.svg" },
+      { name: "Unity", icon: "media/software/unity.svg" },
+      { name: "Photoshop", icon: "media/software/photoshop.svg" },
+    ],
     platform: "PC",
     genre: "Party Game",
-    overview: "Artifact Ambush is a chaotic party game where up to four players battle it out in a confined arena. The goal is simple: be the first adventurer to collect 20 coins. But watch out for the other players, they can steal your coins by punching you or simply throwing dynamite in your face.",
-    responsibilities: pending,
-    challenges: pending,
-    process: pending,
-    production: pending,
-    results: pending,
+    contributions: [
+      "Game design",
+      "Production planning",
+      "Mechanic development",
+      "Clarity assurance",
+      "Playtesting",
+    ],
+    teamCredits: {
+      before: "Artifact Ambush was created by a four-person student team. My teammates prefer not to be named publicly.",
+      members: [],
+      after: "",
+    },
+    results: "With Artifact Ambush, we aimed to create a competitive yet lighthearted experience where players are constantly messing with each other. By focusing on a clear target experience and intended emotional response, we earned a top grade in the course.",
     url: "",
-    gallery: [],
+    gallery: [
+      {
+        src: "media/artifact-ambush/title-screen.png",
+        alt: "Artifact Ambush title screen with the game logo and a prompt to continue.",
+      },
+      {
+        src: "media/artifact-ambush/gameplay-screen.png",
+        alt: "Artifact Ambush four-player arena gameplay with the coin counter and player controls.",
+      },
+      {
+        src: "media/artifact-ambush/win-screen.png",
+        alt: "Artifact Ambush victory screen announcing the first player to collect 20 coins.",
+      },
+    ],
   },
   {
     slug: "fixtape",
     title: "Fixtape",
     category: "GAME JAM",
-    role: "Game Design & Sound",
+    role: "Game & Sound Designer",
     description: "In Fixtape, you play as an old-school movie theatre employee. After accidentally playing an 18+ film in a cinema filled with kids, it's your job to make sure no inappropriate scenes make it onto the big screen. Your only option? Cut all the bad frames out of the old movie tape before they are shown and hopefully keep your job in the process.",
     theme: "tape",
     image: "media/fixtape-icon.png",
     imageAlt: "Fixtape title with a vintage film reel",
+    video: "media/fixtape/fixtape-full-gameplay.mp4",
+    previewVideo: "media/fixtape/fixtape-hover.mp4",
     team: "3 Devs",
     timeframe: "30 Hours",
     tools: "Unity",
-    software: [{ name: "Unity", icon: "media/software/unity.svg" }],
-    platform: "PC",
+    software: [
+      { name: "Blender", icon: "media/software/blender.svg" },
+      { name: "Unity", icon: "media/software/unity.svg" },
+      { name: "Photoshop", icon: "media/software/photoshop.svg" },
+    ],
+    platform: "PC / WEB",
     genre: "Arcade / Simulation",
-    overview: "In Fixtape, you play as an old-school movie theatre employee. After accidentally playing an 18+ film in a cinema filled with kids, it's your job to make sure no inappropriate scenes make it onto the big screen. Your only option? Cut all the bad frames out of the old movie tape before they are shown and hopefully keep your job in the process.",
-    responsibilities: pending,
-    challenges: pending,
-    process: pending,
-    production: pending,
-    results: pending,
-    url: "",
-    gallery: [],
+    contributions: [
+      "Playtesting / Balancing",
+      "Input design",
+      "Clarity and quality of life",
+      "Audio",
+    ],
+    teamCredits: {
+      before: "I worked on this project together with my fellow Independent Game Production students, ",
+      members: [
+        { name: "Ernst Verbeuren", url: "https://ernstverbeuren.dev" },
+        { name: "Yelyzaveta Skorohliad" },
+      ],
+      after: ".",
+    },
+    results: "This game was created with limited time and resources. After 30 hours of hard work, we brought Fixtape to life. To give the game its own unique identity, we filmed our own movie scenes and integrated them directly into the gameplay. Our work earned us second place among our classmates.",
+    url: "https://kanokoaomi.itch.io/fixtape",
+    gallery: [
+      {
+        src: "media/fixtape/menu-screen.png",
+        alt: "Fixtape main menu with Play, Controls, and Quit options beside a film reel.",
+      },
+      {
+        src: "media/fixtape/gameplay-7-percent.png",
+        alt: "Fixtape gameplay at 7 percent, with film strips and scissors ready to cut inappropriate scenes.",
+      },
+      {
+        src: "media/fixtape/gameplay-17-percent.png",
+        alt: "Fixtape gameplay at 17 percent, showing two film strips and the cutting tool.",
+      },
+      {
+        src: "media/fixtape/game-over.png",
+        alt: "Fixtape game over screen with a black-and-white movie scene and a restart prompt.",
+      },
+    ],
   },
 
 ];

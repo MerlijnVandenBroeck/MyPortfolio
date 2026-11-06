@@ -11,7 +11,7 @@ export function About() {
       <Reveal className="about-layout">
         <div className="about-heading">
           <h2>About me</h2>
-          <Portrait className="about-portrait" />
+          <Portrait className="about-portrait" photo={personal.aboutPhoto} />
         </div>
         <div className="about-copy">
           <h3>{personal.about.heading}</h3>

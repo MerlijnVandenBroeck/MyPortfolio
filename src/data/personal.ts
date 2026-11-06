@@ -7,7 +7,8 @@ export const personal = {
   firstName,
   lastName,
   title: "Game Designer × Producer",
-  photo: "",
+  photo: "media/portraits/merlijn-red-shirt.jpg",
+  aboutPhoto: "media/portraits/merlijn-yellow-shirt.jpg",
   photoAlt: "Merlijn Van den Broeck",
   about: {
     heading: "Indie Game Designer & Producer",

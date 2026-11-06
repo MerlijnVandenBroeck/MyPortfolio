@@ -4,15 +4,17 @@ import { personal } from "../data/personal";
 export function Portrait({
   className,
   priority = false,
+  photo = personal.photo,
 }: {
   className: string;
   priority?: boolean;
+  photo?: string;
 }) {
   return (
     <div className={className}>
-      {personal.photo ? (
+      {photo ? (
         <img
-          src={personal.photo}
+          src={photo}
           alt={personal.photoAlt}
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : "auto"}
