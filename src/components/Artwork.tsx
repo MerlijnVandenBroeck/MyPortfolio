@@ -57,7 +57,7 @@ export function Artwork({
         onFocus={startPreview} onBlur={stopPreview}>
         <img src={project.image} alt={project.imageAlt} loading="lazy" />
         {project.previewVideo && !allowVideo && (
-          <video ref={preview} muted loop playsInline preload="none" aria-hidden="true" onError={stopPreview}>
+          <video ref={preview} muted playsInline preload="none" aria-hidden="true" onEnded={stopPreview} onError={stopPreview}>
             <source src={project.previewVideo} />
           </video>
         )}

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, ArrowRight, Play } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowLeft, ArrowUpRight, ArrowRight, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { projectNumber, type Project } from "../data/projects";
 import { Artwork } from "./Artwork";
 import { Reveal } from "./Reveal";
@@ -11,102 +12,179 @@ export function CaseStudyTemplate({
   project: Project;
   next: Project;
 }) {
+  return <ProjectCaseStudy project={project} next={next} />;
+}
+
+function ProjectCaseStudy({
+  project,
+  next,
+}: {
+  project: Project;
+  next: Project;
+}) {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const selectedImage = selectedImageIndex === null ? null : project.gallery[selectedImageIndex];
+  const lightbox = useRef<HTMLDialogElement>(null);
+  const overview = [
+    ["Platform", project.platform],
+    ["Development", project.timeframe],
+    ["Team size", project.team],
+    ["Roles", project.role],
+    ["Genre", project.genre],
+  ];
+
+  useEffect(() => {
+    if (selectedImage && lightbox.current && !lightbox.current.open) {
+      lightbox.current.showModal();
+    }
+  }, [selectedImage]);
+
   return (
-    <article className="case-study section">
+    <article className="case-study case-study-project section">
       <Link className="text-link" to="/?section=work">
-        <ArrowLeft aria-hidden="true" size={16} /> BACK TO WORK
+        <ArrowLeft aria-hidden="true" size={16} /> BACK TO PROJECTS
       </Link>
-      <div className="case-heading">
-        <span className="mono accent">
-          {projectNumber(project)} / {project.category}
-        </span>
-        <h1>{project.title}</h1>
-        <p>{project.description}</p>
-      </div>
-      <Artwork project={project} allowVideo />
-      <div className={`case-facts ${project.story ? "case-facts-complete" : ""}`}>
-        {(project.story ? [
-          ["Platform", project.platform],
-          ["Development", project.timeframe],
-          ["Team", project.team],
-          ["Role", project.role],
-          ["Engine", project.tools],
-          ["Genre", project.genre],
-        ] : [
-          ["My role", project.role],
-          ["Team size", project.team],
-          ["Timeframe", project.timeframe],
-          ["Engine & tools", project.tools],
-          ["Genre & platform", project.genre],
-        ]).map(([label, value]) => (
-          <div key={label}>
-            <span className="mono">{label}</span>
-            <p>{value}</p>
-          </div>
-        ))}
-      </div>
-      {project.story && (
-        <div className="case-story">
-          {project.story.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-          <a className="button" href={project.url} target="_blank" rel="noreferrer">
-            <Play aria-hidden="true" size={16} /> PLAY ON ITCH.IO
-            <ArrowUpRight aria-hidden="true" size={16} />
-          </a>
+
+      <header className="spindwich-heading">
+        <span className="mono accent">{project.category}</span>
+        <div className="spindwich-title-row">
+          <h1>{project.title}</h1>
+          {project.url ? (
+            <a className="spindwich-play-link" href={project.url} target="_blank" rel="noreferrer">
+              <Play aria-hidden="true" size={15} /> PLAY ON ITCH.IO <ArrowUpRight aria-hidden="true" size={15} />
+            </a>
+          ) : project.slug !== "artifact-ambush" ? (
+            <button className="spindwich-play-link is-pending" type="button" disabled>
+              PLAY LINK TO ADD
+            </button>
+          ) : null}
+        </div>
+      </header>
+
+      {project.video ? (
+        <Artwork project={project} allowVideo />
+      ) : (
+        <div className="spindwich-video-placeholder" role="img" aria-label="Gameplay video placeholder">
+          <Play aria-hidden="true" size={38} />
+          <span className="mono">GAMEPLAY VIDEO TO ADD</span>
         </div>
       )}
-      {project.software && (
-        <section className="case-software" aria-labelledby="software-heading">
-          <h2 id="software-heading">Software</h2>
-          <ul>
-            {project.software.map(({ name, icon }) => (
-              <li key={name}>
-                <span className="software-logo" style={{ maskImage: `url("${icon}")` }} aria-hidden="true" />
-                <span>{name}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-      <div className="case-sections">
-        {(project.story ? [
-          ["My responsibilities", project.responsibilities],
-          ["Lessons learned", project.results],
-        ] : [
-          ["Project overview", project.overview],
-          ["My responsibilities", project.responsibilities],
-          ["Design challenges", project.challenges],
-          ["Process & experimentation", project.process],
-          ["Production contributions", project.production],
-          ["Results & lessons learned", project.results],
-        ]).map(([label, value], i) => (
-          <Reveal className="case-section" key={label}>
-            <span className="mono accent">0{i + 1}</span>
-            <h2>{label}</h2>
-            <p>{value}</p>
-          </Reveal>
-        ))}
+
+      <section className="spindwich-overview" aria-labelledby="overview-heading">
+        <div>
+          <h2 id="overview-heading">Overview</h2>
+        </div>
+        <dl>
+          {overview.map(([label, value]) => (
+            <div key={label}>
+              <dt className="mono">{label}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+          {project.software ? (
+            <div>
+              <dt className="mono">Software</dt>
+              <dd className="spindwich-software-icons">
+                {project.software.map(({ name, icon }) => (
+                  <span
+                    key={name}
+                    className="spindwich-software-icon"
+                    style={{ maskImage: `url("${icon}")` }}
+                    role="img"
+                    aria-label={name}
+                    title={name}
+                  />
+                ))}
+              </dd>
+            </div>
+          ) : (
+            <div>
+              <dt className="mono">Software</dt>
+              <dd>{project.tools}</dd>
+            </div>
+          )}
+        </dl>
+      </section>
+
+      <section className="spindwich-description" aria-labelledby="description-heading">
+        <div className="spindwich-section-label">
+          <h2 id="description-heading">The game</h2>
+        </div>
+        <div>
+          <p>{project.description}</p>
+        </div>
+      </section>
+
+      <div className="spindwich-copy-grid">
+        <Reveal className="spindwich-copy-panel">
+          <h2>My contributions</h2>
+          {project.contributions ? (
+            <ul className="spindwich-contributions">
+              {project.contributions.map((contribution) => <li key={contribution}>{contribution}</li>)}
+            </ul>
+          ) : (
+            <p>{project.responsibilities}</p>
+          )}
+        </Reveal>
+        <Reveal className="spindwich-copy-panel">
+          <h2>Results</h2>
+          <p>{project.results}</p>
+        </Reveal>
+        <Reveal className="spindwich-copy-panel">
+          <h2>Team mates</h2>
+          <p>
+            {project.teammate ? (
+              <>
+                {project.teammate.before}
+                <a href={project.teammate.url} target="_blank" rel="noreferrer">
+                  {project.teammate.name}
+                </a>
+                {project.teammate.after}
+              </>
+            ) : "Team member details to add."}
+          </p>
+        </Reveal>
       </div>
-      {project.gallery.map((image) => (
-        <img
-          key={image.src}
-          className="gallery-image"
-          src={image.src}
-          alt={image.alt}
-          loading="lazy"
-        />
-      ))}
-      {project.story ? null : project.url ? (
-        <a
-          className="button"
-          href={project.url}
-          target="_blank"
-          rel="noreferrer"
-        >
-          VIEW GAME <ArrowUpRight aria-hidden="true" size={16} />
-        </a>
-      ) : (
-        <p className="unavailable mono">EXTERNAL GAME LINK TO ADD</p>
-      )}
+
+      <section className="spindwich-gallery" aria-labelledby="gallery-heading">
+        <div className="spindwich-section-heading">
+          <h2 id="gallery-heading">Gallery</h2>
+        </div>
+        <div className={`spindwich-gallery-grid ${project.gallery.length ? "has-gallery" : ""}`}>
+          {project.gallery.length ? project.gallery.map(({ src, alt }, index) => (
+            <button className="gallery-thumb" type="button" key={src} onClick={() => setSelectedImageIndex(index)} aria-label={`Open image larger: ${alt}`}>
+              <img src={src} alt={alt} loading="lazy" />
+            </button>
+          )) : ["Gameplay screenshot 01", "Gameplay screenshot 02", "Gameplay screenshot 03"].map((label, index) => (
+            <div className={`gallery-placeholder gallery-placeholder-${index + 1}`} key={label} role="img" aria-label={label}>
+              <span className="mono">{label.toUpperCase()}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <dialog className="gallery-lightbox" ref={lightbox} onClose={() => setSelectedImageIndex(null)} onClick={(event) => {
+        if (event.target === event.currentTarget) lightbox.current?.close();
+      }} onKeyDown={(event) => {
+        if (event.key === "ArrowRight") setSelectedImageIndex((index) => index === null ? null : (index + 1) % project.gallery.length);
+        if (event.key === "ArrowLeft") setSelectedImageIndex((index) => index === null ? null : (index - 1 + project.gallery.length) % project.gallery.length);
+      }}>
+        {selectedImage && (
+          <>
+            <div className="gallery-lightbox-viewer">
+              <button className="gallery-lightbox-arrow" type="button" onClick={() => setSelectedImageIndex((index) => index === null ? null : (index - 1 + project.gallery.length) % project.gallery.length)} aria-label="Previous image">
+                <ChevronLeft aria-hidden="true" />
+              </button>
+              <img src={selectedImage.src} alt={selectedImage.alt} />
+              <button className="gallery-lightbox-arrow" type="button" onClick={() => setSelectedImageIndex((index) => index === null ? null : (index + 1) % project.gallery.length)} aria-label="Next image">
+                <ChevronRight aria-hidden="true" />
+              </button>
+            </div>
+            <p className="mono">{selectedImage.alt}</p>
+          </>
+        )}
+      </dialog>
+
       <Link className="next-project" to={`/work/${next.slug}`}>
         <span className="mono">UP NEXT / {projectNumber(next)}</span>
         <h2>

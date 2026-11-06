@@ -39,9 +39,8 @@ export function ProjectCard({
           {[
             ["Platform", project.platform],
             ["Development", project.timeframe],
-            ["Team", project.team],
-            ["Role", project.role],
-            ["Engine", project.tools],
+            ["Team size", project.team],
+            ["Roles", project.role],
             ["Genre", project.genre],
           ].map(([label, value]) => (
             <div key={label}>
@@ -49,6 +48,21 @@ export function ProjectCard({
               <dd>{value}</dd>
             </div>
           ))}
+          <div>
+            <dt className="mono">Software</dt>
+            <dd className="project-card-software">
+              {project.software ? project.software.map(({ name, icon }) => (
+                <span
+                  key={name}
+                  className="project-card-software-icon"
+                  style={{ maskImage: `url("${icon}")` }}
+                  role="img"
+                  aria-label={name}
+                  title={name}
+                />
+              )) : project.tools}
+            </dd>
+          </div>
         </dl>
       )}
     </Reveal>
