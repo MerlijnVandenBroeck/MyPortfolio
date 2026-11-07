@@ -22,7 +22,7 @@ export default function App() {
     const project = projects.find(
       (p) => location.pathname === `/work/${p.slug}`,
     );
-    document.title = `${project ? project.title + " — " : ""}${personal.name} — PLAY / WORK`;
+    document.title = `${project ? project.title + " — " : ""}${personal.name} - Portfolio`;
   }, [location]);
   return (
     <>

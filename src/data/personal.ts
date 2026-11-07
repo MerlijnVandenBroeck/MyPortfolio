@@ -7,13 +7,13 @@ export const personal = {
   firstName,
   lastName,
   title: "Game Designer × Producer",
-  photo: "media/portraits/merlijn-red-shirt.jpg",
-  aboutPhoto: "media/portraits/merlijn-yellow-shirt.jpg",
+  photo: "media/portraits/merlijn-suit.jpg",
+  aboutPhoto: "media/portraits/about-campfire.jpg",
   photoAlt: "Merlijn Van den Broeck",
   about: {
     heading: "Indie Game Designer & Producer",
     introduction:
-      "Hi, I'm Merlijn, a second-year Independent Game Production student at Howest Digital Arts & Entertainment in Kortrijk, Belgium.",
+      "Hi, I'm Merlijn, a game designer and producer based in Belgium, with a passion for creating engaging and memorable gaming experiences.",
     background:
       "Through my background in youth organizations and competitive sports, I've developed strong teamwork, communication, and problem-solving skills, as well as the ability to stay focused under pressure.",
     passions:
@@ -22,7 +22,7 @@ export const personal = {
   contactMessage:
     "If you'd like to discuss a project, collaboration, internship opportunity, or anything related to game development, feel free to reach out.",
   email: "merlijn@9levens.be",
-  cv: "",
+  cv: "Merlijn_VandenBroeck_CV_2026.pdf",
   socials: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/merlijn-van-den-broeck/" },
     { label: "itch.io", url: "https://elmerlino.itch.io/" },

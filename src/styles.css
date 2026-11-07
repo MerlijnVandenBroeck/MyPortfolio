@@ -910,9 +910,17 @@ footer .mono {
   height: 100%;
   object-fit: cover;
 }
+.hero-portrait {
+  position: relative;
+}
 .hero-portrait img {
-  object-position: center top;
-  transform: scale(1.4);
+  position: absolute;
+  width: 170%;
+  max-width: none;
+  height: auto;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -16%);
 }
 .portrait-placeholder {
   display: flex;
