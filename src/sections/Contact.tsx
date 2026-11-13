@@ -1,6 +1,5 @@
 ﻿import { ArrowUpRight, Download, Instagram, Linkedin } from "lucide-react";
 import { personal } from "../data/personal";
-import { SectionLabel } from "../components/SectionLabel";
 import { Reveal } from "../components/Reveal";
 
 function SocialIcon({ label }: { label: string }) {
@@ -17,7 +16,6 @@ function SocialIcon({ label }: { label: string }) {
 export function Contact() {
   return (
     <section id="contact" className="section contact">
-      <SectionLabel number="03">CONTACT</SectionLabel>
       <Reveal>
         <h2>Contact</h2>
         <p className="contact-intro">{personal.contactMessage}</p>

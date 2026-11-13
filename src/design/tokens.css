@@ -1,25 +1,25 @@
 /* Shared visual system. Preserve these defaults unless a visual change is requested. */
 :root {
   /* Brand and semantic surfaces. Artwork-specific palettes stay in styles.css. */
-  --bg: #111318;
-  --surface: #191c22;
-  --accent: #f8a36a;
-  --accent-hover: #ffc39a;
-  --text: #f1eee8;
-  --muted: #a2a6af;
-  --quiet: #767c87;
-  --line: #ffffff23;
-  --header-bg: #111318ed;
-  --badge-bg: #1113189c;
-  --portrait-surface: #22262e;
+  --bg: #111827;
+  --surface: #1c2636;
+  --accent: #f97316;
+  --accent-hover: #fdba74;
+  --text: #fef3c7;
+  --muted: #c1c6cf;
+  --quiet: #a4adbb;
+  --line: #4b5563;
+  --header-bg: #111827ed;
+  --badge-bg: #111827e6;
+  --portrait-surface: #4b5563;
 
   --heading: "Space Grotesk", sans-serif;
   --body: Inter, sans-serif;
   --mono: "Space Mono", monospace;
-  --type-caption: 8px;
-  --type-label: 10px;
+  --type-caption: 11px;
+  --type-label: 12px;
   --type-small: 12px;
-  --type-copy: 13px;
+  --type-copy: 15px;
   --type-body: 15px;
   --type-card: 32px;
   --type-section: clamp(40px, 5vw, 76px);

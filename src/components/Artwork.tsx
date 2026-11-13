@@ -12,6 +12,19 @@ export function Artwork({
   const preview = useRef<HTMLVideoElement>(null);
   const previewRequested = useRef(false);
   const [playing, setPlaying] = useState(false);
+  useEffect(() => {
+    if (!allowVideo || !project.video) return;
+    const video = preview.current;
+    const preference = matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePlayback = () => {
+      if (!video) return;
+      if (preference.matches) video.pause();
+      else { video.muted = true; void video.play().catch(() => { /* Native controls remain available. */ }); }
+    };
+    updatePlayback();
+    preference.addEventListener("change", updatePlayback);
+    return () => { preference.removeEventListener("change", updatePlayback); video?.pause(); };
+  }, [allowVideo, project.video]);
   useEffect(() => () => {
     previewRequested.current = false;
     preview.current?.pause();
@@ -36,8 +49,10 @@ export function Artwork({
         <video
           ref={preview}
           controls
-          preload="none"
-          poster={project.videoPoster}
+          muted
+          playsInline
+          preload="auto"
+          poster={project.videoPoster || project.gallery[0]?.src || project.image}
           aria-label={`${project.title} project video`}
         >
           {/* Provide captions for spoken content. */}

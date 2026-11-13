@@ -5,6 +5,7 @@ export type Project = {
   category: string;
   role: string;
   description: string;
+  summary: string;
   theme: "artifact" | "tape" | "spin" | "neutral";
   image: string;
   imageAlt: string;
@@ -37,6 +38,7 @@ export const projects: Project[] = [
       { name: "Photoshop", icon: "media/software/photoshop.svg" },
     ],
     title: "Spindwich",
+    summary: "Spin for ingredients, build sandwiches, and keep up with customer orders in a fast-paced cooking game.",
     category: "GAME JAM",
     role: "Game Designer & Artist",
     description:
@@ -88,6 +90,7 @@ export const projects: Project[] = [
   {
     slug: "artifact-ambush",
     title: "Artifact Ambush",
+    summary: "Race to collect 20 coins in a chaotic four-player arena, stealing from rivals with punches and dynamite.",
     category: "SCHOOL PROJECT",
     role: "Game Designer & Developer",
     description: "Artifact Ambush is a chaotic party game where up to four players battle it out in a confined arena. The goal is simple: be the first adventurer to collect 20 coins. But watch out for the other players; they can steal your coins by punching you or throwing dynamite in your face.",
@@ -138,6 +141,7 @@ export const projects: Project[] = [
   {
     slug: "fixtape",
     title: "Fixtape",
+    summary: "Save your cinema job by cutting inappropriate frames out of a film before they reach the big screen.",
     category: "GAME JAM",
     role: "Game & Sound Designer",
     description: "In Fixtape, you play as an old-school movie theatre employee. After accidentally playing an 18+ film in a cinema filled with kids, it's your job to make sure no inappropriate scenes make it onto the big screen. Your only option? Cut all the bad frames out of the old movie tape before they are shown and hopefully keep your job in the process.",

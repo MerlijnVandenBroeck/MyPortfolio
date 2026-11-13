@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowUpRight, ArrowRight, Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ArrowRight, Play, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { projectNumber, type Project } from "../data/projects";
 import { Artwork } from "./Artwork";
 import { Reveal } from "./Reveal";
@@ -61,59 +61,56 @@ function ProjectCaseStudy({
         </div>
       </header>
 
-      {project.video ? (
-        <Artwork key={`${project.slug}-${project.video}`} project={project} allowVideo />
-      ) : (
-        <div className="spindwich-video-placeholder" role="img" aria-label="Gameplay video placeholder">
-          <Play aria-hidden="true" size={38} />
-          <span className="mono">GAMEPLAY VIDEO TO ADD</span>
-        </div>
-      )}
-
-      <section className="spindwich-overview" aria-labelledby="overview-heading">
-        <div>
-          <h2 id="overview-heading">Overview</h2>
-        </div>
-        <dl>
-          {overview.map(([label, value]) => (
-            <div key={label}>
-              <dt className="mono">{label}</dt>
-              <dd>{value}</dd>
-            </div>
-          ))}
-          {project.software ? (
-            <div>
-              <dt className="mono">Software</dt>
-              <dd className="spindwich-software-icons">
-                {project.software.map(({ name, icon }) => (
-                  <span
-                    key={name}
-                    className="spindwich-software-icon"
-                    style={{ maskImage: `url("${icon}")` }}
-                    role="img"
-                    aria-label={name}
-                    title={name}
-                  />
-                ))}
-              </dd>
-            </div>
+      <div className="case-intro">
+        <div className="case-intro-media">
+          {project.video ? (
+            <Artwork key={`${project.slug}-${project.video}`} project={project} allowVideo />
           ) : (
-            <div>
-              <dt className="mono">Software</dt>
-              <dd>{project.tools}</dd>
+            <div className="spindwich-video-placeholder" role="img" aria-label="Gameplay video placeholder">
+              <Play aria-hidden="true" size={38} />
+              <span className="mono">GAMEPLAY VIDEO TO ADD</span>
             </div>
           )}
-        </dl>
-      </section>
-
-      <section className="spindwich-description" aria-labelledby="description-heading">
-        <div className="spindwich-section-label">
-          <h2 id="description-heading">The game</h2>
         </div>
-        <div>
-          <p>{project.description}</p>
+        <div className="case-intro-details">
+          <p className="case-intro-description">{project.description}</p>
+          <section className="spindwich-overview" aria-labelledby="overview-heading">
+            <div>
+              <h2 id="overview-heading">Overview</h2>
+            </div>
+            <dl>
+              {overview.map(([label, value]) => (
+                <div key={label}>
+                  <dt className="mono">{label}</dt>
+                  <dd>{value}</dd>
+                </div>
+              ))}
+              {project.software ? (
+                <div>
+                  <dt className="mono">Software</dt>
+                  <dd className="spindwich-software-icons">
+                    {project.software.map(({ name, icon }) => (
+                      <span
+                        key={name}
+                        className="spindwich-software-icon"
+                        style={{ maskImage: `url("${icon}")` }}
+                        role="img"
+                        aria-label={name}
+                        title={name}
+                      />
+                    ))}
+                  </dd>
+                </div>
+              ) : (
+                <div>
+                  <dt className="mono">Software</dt>
+                  <dd>{project.tools}</dd>
+                </div>
+              )}
+            </dl>
+          </section>
         </div>
-      </section>
+      </div>
 
       <div className="spindwich-copy-grid">
         <Reveal className="spindwich-copy-panel">
@@ -172,6 +169,7 @@ function ProjectCaseStudy({
       }}>
         {selectedImage && (
           <>
+            <button className="gallery-close text-link mono" type="button" onClick={() => lightbox.current?.close()} autoFocus aria-label="Close image viewer">CLOSE <X aria-hidden="true" size={18} /></button>
             <div className="gallery-lightbox-viewer">
               <button className="gallery-lightbox-arrow" type="button" onClick={() => setSelectedImageIndex((index) => index === null ? null : (index - 1 + project.gallery.length) % project.gallery.length)} aria-label="Previous image">
                 <ChevronLeft aria-hidden="true" />

@@ -32,6 +32,12 @@ export function Header() {
       >
         <House aria-hidden="true" size={22} strokeWidth={1.5} />
       </Link>
+      {location.pathname === "/" && (
+        <div className="header-identity">
+          <span className="header-name">{personal.name}</span>
+          <span className="header-role">{personal.title}</span>
+        </div>
+      )}
       <button
         className="menu-button"
         aria-label={open ? "Close navigation" : "Open navigation"}
