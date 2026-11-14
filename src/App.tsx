@@ -6,6 +6,7 @@ import { Header, Footer } from "./components/Layout";
 import { Home } from "./pages/Home";
 import { CaseStudy } from "./pages/CaseStudy";
 import { NotFound } from "./pages/NotFound";
+import { AboutMe } from "./pages/AboutMe";
 export default function App() {
   const location = useLocation();
   useEffect(() => {
@@ -22,7 +23,8 @@ export default function App() {
     const project = projects.find(
       (p) => location.pathname === `/work/${p.slug}`,
     );
-    document.title = `${project ? project.title + " — " : ""}${personal.name} - Portfolio`;
+    const pageTitle = project?.title ?? (location.pathname === "/about" ? "About me" : "");
+    document.title = `${pageTitle ? pageTitle + " — " : ""}${personal.name} - Portfolio`;
   }, [location]);
   return (
     <>
@@ -41,6 +43,7 @@ export default function App() {
       <main id="main" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutMe />} />
           <Route path="/work/:slug" element={<CaseStudy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

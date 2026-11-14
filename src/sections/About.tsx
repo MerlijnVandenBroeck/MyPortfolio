@@ -1,6 +1,8 @@
 import { personal } from "../data/personal";
 import { Reveal } from "../components/Reveal";
 import { Portrait } from "../components/Portrait";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 
 export function About() {
   return (
@@ -13,6 +15,9 @@ export function About() {
           <p>{personal.about.introduction}</p>
           <p>{personal.about.background}</p>
           <p>{personal.about.passions}</p>
+          <Link className="text-link about-link" to="/about">
+            MORE ABOUT ME <ArrowUpRight aria-hidden="true" size={16} />
+          </Link>
         </div>
       </Reveal>
     </section>
