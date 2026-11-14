@@ -540,6 +540,11 @@ em {
   letter-spacing: var(--tracking-heading);
 }
 .about-story-copy p { max-width: 48ch; margin-inline: auto; }
+.about-story-copy p + p { margin-top: var(--space-6); }
+.about-ending, .about-contact { margin-top: var(--space-15); max-width: 64ch; margin-inline: auto; text-align: center; }
+.about-contact { border-top: var(--border-width) solid var(--line); padding-top: var(--space-10); }
+.about-contact h2 { font-size: var(--type-card); margin-bottom: var(--space-6); }
+.about-contact-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-4); margin-top: var(--space-8); }
 @media (max-width: 640px) {
   .about-stories { margin-top: var(--space-10); }
   .about-story,

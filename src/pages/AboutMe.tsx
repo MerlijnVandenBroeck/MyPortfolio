@@ -1,8 +1,9 @@
-import { Image } from "lucide-react";
+import { ArrowUpRight, Image, Linkedin, Mail } from "lucide-react";
 import { Reveal } from "../components/Reveal";
 import { personal } from "../data/personal";
 
 export function AboutMe() {
+  const linkedIn = personal.socials.find(({ label }) => label === "LinkedIn");
   return (
     <section className="section about-page">
       <h1>About me</h1>
@@ -21,11 +22,20 @@ export function AboutMe() {
               </div>
               <div className="about-story-copy">
                 <h2 id={`about-${section.id}`}>{section.title}</h2>
-                <p>{section.text}</p>
+                {section.text.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               </div>
             </Reveal>
         ))}
       </div>
+      <Reveal className="about-ending"><p>{personal.aboutEnding}</p></Reveal>
+      <Reveal className="about-contact">
+        <h2>{personal.aboutContact.heading}</h2>
+        <p>{personal.aboutContact.message}</p>
+        <div className="about-contact-actions">
+          <a className="button" href={`mailto:${personal.email}`}><Mail aria-hidden="true" size={18} /> {personal.email}</a>
+          {linkedIn?.url && <a className="button outline" href={linkedIn.url} target="_blank" rel="noreferrer" aria-label="LinkedIn (opens in a new tab)"><Linkedin aria-hidden="true" size={18} /> LinkedIn <ArrowUpRight aria-hidden="true" size={16} /></a>}
+        </div>
+      </Reveal>
     </section>
   );
 }
